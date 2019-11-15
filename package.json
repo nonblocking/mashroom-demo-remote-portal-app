@@ -3,6 +3,7 @@
     "description": "Mashroom Demo Remote Portal App",
     "version": "1.0.1",
     "homepage": "https://www.mashroom-server.com",
+    "repository": "github:nonblocking/mashroom-demo-remote-portal-app",
     "license": "MIT",
     "private": true,
     "engines": {
