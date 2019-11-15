@@ -17,7 +17,7 @@ Open in your browser: http://localhost:6088/
 
 ### Integrate it into the Mashroom Portal
     
- * Install and start [Mashroom Portal Quickstart](https://github.com/nonblocking/mashroom-portal-quickstart)   
- * Open http://localhost:5050/portal-remote-app-registry/admin
+ * Clone, setup and start the [Mashroom Portal Quickstart](https://github.com/nonblocking/mashroom-portal-quickstart) project
+ * Open http://localhost:5050/portal-remote-app-registry
  * Copy http://localhost:6088 into the URL input and click _Add_
  * Open http://localhost:5050/portal and place the _Mashroom Demo Remote Portal App_ on any page via Drag'n'Drop
