@@ -36,8 +36,8 @@
         "@babel/preset-flow": "^7.9.0",
         "@babel/preset-react": "^7.9.4",
         "@babel/register": "^7.9.0",
-        "@mashroom/mashroom": "^1.4.0",
-        "@mashroom/mashroom-portal": "^1.4.0",
+        "@mashroom/mashroom": "^1.4.2",
+        "@mashroom/mashroom-portal": "^1.4.2",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^25.2.6",
         "babel-loader": "^8.1.0",
@@ -81,7 +81,7 @@
                     "restProxies": {
                         "bff": {
                             "targetUri": "http://localhost:6086/api",
-                            "sendUserHeader": true,
+                            "sendUserHeaders": true,
                             "sendPermissionsHeader": true
                         }
                     },
