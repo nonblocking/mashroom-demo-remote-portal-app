@@ -1,7 +1,6 @@
-// @flow
 
 import React, { PureComponent } from 'react';
-import { AppStyle, ErrorStyle } from './App.scss';
+import styles from './App.scss';
 
 import type { MashroomRestService } from '@mashroom/mashroom-portal/type-definitions';
 
@@ -11,14 +10,14 @@ type Props = {
 }
 
 type State = {
-    joke: ?string,
-    error: boolean
+    joke: string | undefined | null;
+    error: boolean;
 }
 
-class App extends PureComponent<Props, State> {
+export default class App extends PureComponent<Props, State> {
 
-    constructor() {
-        super();
+    constructor(props: Props) {
+        super(props);
         this.state = {
             error: false,
             joke: null
@@ -46,7 +45,7 @@ class App extends PureComponent<Props, State> {
     renderContent() {
         const { joke, error } = this.state;
         if (error) {
-            return <div className={ErrorStyle}>Error loading</div>
+            return <div className={styles.ErrorStyle}>Error loading</div>
         } else if (!joke) {
             return <div>Loading...</div>;
         }
@@ -63,11 +62,9 @@ class App extends PureComponent<Props, State> {
 
 
         return (
-            <div className={AppStyle}>
+            <div className={styles.AppStyle}>
                 {this.renderContent()}
             </div>
         );
     }
 }
-
-export default App;

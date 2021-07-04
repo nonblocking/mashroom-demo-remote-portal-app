@@ -1,17 +1,15 @@
-// @flow
 
-import type { $Request, $Response } from 'express';
-import { get } from "request";
-import { promisify } from "util";
+import { get } from 'request';
+import { promisify } from 'util';
 import Pino from 'pino';
+import type { Request, Response } from 'express';
 
 const pino = Pino();
 const getAsync = promisify(get);
 
-export default async (req: $Request, res: $Response) => {
+export default async (req: Request, res: Response) => {
     try {
-
-        const {statusCode, body} = await getAsync('http://api.icndb.com/jokes/random');
+        const {statusCode, body} = await getAsync({ url: 'http://api.icndb.com/jokes/random' });
         const data = JSON.parse(body);
 
         if (statusCode === 200 && data.type === 'success') {

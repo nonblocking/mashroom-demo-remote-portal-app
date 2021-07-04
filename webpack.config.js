@@ -7,15 +7,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/frontend'),
         publicPath: '/',
     },
-
-    resolve: {
-        extensions: ['.js', '.jsx'],
-    },
-
+    target: ['web', 'es5'],
     module: {
         rules: [
             {
-                test: /\.jsx?/,
+                test: /\.(js|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -38,7 +34,9 @@ module.exports = {
             },
         ]
     },
-
+    resolve: {
+        extensions: ['.js', '.ts', '.tsx'],
+    },
     plugins: [
         new HtmlWebpackPlugin({
             inject: 'head',

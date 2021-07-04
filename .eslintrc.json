@@ -1,13 +1,13 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "plugins": [
-        "react",
-        "flowtype"
+        "@typescript-eslint/eslint-plugin",
+        "react"
     ],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:flowtype/recommended"
+        "plugin:@typescript-eslint/recommended"
     ],
     "env": {
         "node": true,
@@ -16,11 +16,16 @@
     },
     "settings": {
         "react": {
-            "version": "16.6"
+            "version": "detect"
         }
     },
     "rules": {
-        "no-console": "off",
-        "no-unused-vars": "off"
+        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+        "prefer-template": "error",
+        "prefer-object-spread": "error",
+        "no-prototype-builtins": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

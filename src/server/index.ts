@@ -1,4 +1,4 @@
-// @flow
+
 import express, {Router} from 'express';
 import Pino from 'pino';
 import path from 'path';
@@ -10,11 +10,12 @@ const pino = Pino();
 const PORT = process.env.PORT || '6088';
 
 if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const devMiddleware = require('./middleware/devMiddleware').default;
     app.use(devMiddleware);
 }
 
-const api = new Router();
+const api = Router();
 api.get('/randomJoke', randomJoke);
 app.use('/api', api);
 

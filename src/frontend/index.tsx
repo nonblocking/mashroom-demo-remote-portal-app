@@ -1,4 +1,4 @@
-// @flow
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -10,7 +10,7 @@ const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
     portalAppSetup,
     clientServices,
 ) => {
-    const { restProxyPaths = {} } = portalAppSetup || {};
+    const { restProxyPaths } = portalAppSetup || {};
     const { restService } = clientServices;
     const restProxyPath = restProxyPaths.bff;
 
@@ -26,4 +26,4 @@ const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
     });
 };
 
-global.startupDemoRemotePortalApp = bootstrap;
+(global as any).startupDemoRemotePortalApp = bootstrap;
