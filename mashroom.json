@@ -13,7 +13,7 @@
                 ]
             },
             "defaultConfig": {
-                "resourcesRoot": "./dist/public",
+                "resourcesRoot": "./dist/frontend",
                 "restProxies": {
                     "bff": {
                         "targetUri": "http://localhost:6086/api",

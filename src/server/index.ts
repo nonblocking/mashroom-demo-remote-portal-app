@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api', routes);
 
 // Client
-app.use(express.static(path.resolve(__dirname, '../../dist/public')));
+app.use(express.static(path.resolve(__dirname, '../../dist/frontend')));
 
 // Expose package.json for Mashroom Portal
 app.use('/mashroom.json', express.static(path.resolve(__dirname, '..', '..', 'mashroom.json')));
