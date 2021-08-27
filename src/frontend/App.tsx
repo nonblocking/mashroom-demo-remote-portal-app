@@ -2,11 +2,8 @@
 import React, { PureComponent } from 'react';
 import styles from './App.scss';
 
-import type { MashroomRestService } from '@mashroom/mashroom-portal/type-definitions';
-
 type Props = {
-    restProxyPath: string,
-    restService: MashroomRestService
+    restProxyPath: string;
 }
 
 type State = {
@@ -25,21 +22,27 @@ export default class App extends PureComponent<Props, State> {
     }
 
     componentDidMount() {
-        const { restService, restProxyPath } = this.props;
+        const { restProxyPath } = this.props;
 
-        restService.withBasePath(restProxyPath).get('/randomJoke').then(
+        fetch(`${restProxyPath}/randomJoke`).then(
+            (response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error(`Error: Received ${response.status}`);
+            }
+        ).then(
             (response) => {
                 this.setState({
                     joke: response.joke,
                 });
-            },
-            (error) => {
-                console.error(error);
-                this.setState({
-                   error: true
-                });
             }
-        )
+        ).catch((error) => {
+            console.error(error);
+            this.setState({
+                error: true
+            });
+        });
     }
 
     renderContent() {

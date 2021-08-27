@@ -5,17 +5,16 @@ import App from './App';
 
 import type { MashroomPortalAppPluginBootstrapFunction } from '@mashroom/mashroom-portal/type-definitions';
 
-const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
+export const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
     portalAppHostElement,
     portalAppSetup,
     clientServices,
 ) => {
     const { restProxyPaths } = portalAppSetup || {};
-    const { restService } = clientServices;
     const restProxyPath = restProxyPaths.bff;
 
     ReactDOM.render(
-        <App restService={restService} restProxyPath={restProxyPath}/>,
+        <App restProxyPath={restProxyPath}/>,
         portalAppHostElement,
     );
 
