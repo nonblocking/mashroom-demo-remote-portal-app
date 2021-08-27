@@ -1,25 +1,26 @@
 
-import { get } from 'request';
-import { promisify } from 'util';
 import Pino from 'pino';
 import type { Request, Response } from 'express';
 
 const pino = Pino();
-const getAsync = promisify(get);
 
 export default async (req: Request, res: Response) => {
     try {
-        const {statusCode, body} = await getAsync({ url: 'http://api.icndb.com/jokes/random' });
-        const data = JSON.parse(body);
-
-        if (statusCode === 200 && data.type === 'success') {
-            res.json({
-               joke: data.value.joke
-            });
-        } else {
+        const result = await fetch('http://api.icndb.com/jokes/random');
+        if (!result.ok) {
             res.sendStatus(500);
+            return;
         }
 
+        const data = await result.json();
+        if (data.type !== 'success') {
+            res.sendStatus(500);
+            return;
+        }
+
+        res.json({
+            joke: data.value.joke
+        });
     } catch (e) {
         pino.error(e, 'Looking up a random joke failed');
         res.sendStatus(500);

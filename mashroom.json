@@ -1,0 +1,28 @@
+{
+    "$schema": "https://www.mashroom-server.com/schemas/mashroom-plugins.json",
+    "devModeBuildScript": "build",
+    "plugins": [
+        {
+            "name": "Mashroom Demo Remote Portal App",
+            "type": "portal-app",
+            "category": "Demo",
+            "bootstrap": "startupDemoRemotePortalApp",
+            "resources": {
+                "js": [
+                    "index.js"
+                ]
+            },
+            "defaultConfig": {
+                "resourcesRoot": "./dist/public",
+                "restProxies": {
+                    "bff": {
+                        "targetUri": "http://localhost:6086/api",
+                        "sendUserHeaders": true,
+                        "sendPermissionsHeader": true
+                    }
+                },
+                "appConfig": {}
+            }
+        }
+    ]
+}

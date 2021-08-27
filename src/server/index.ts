@@ -3,6 +3,7 @@ import express, {Router} from 'express';
 import Pino from 'pino';
 import path from 'path';
 import randomJoke from './routes/randomJoke';
+import 'cross-fetch/polyfill';
 
 const app = express();
 const pino = Pino();
@@ -19,9 +20,10 @@ const api = Router();
 api.get('/randomJoke', randomJoke);
 app.use('/api', api);
 
-app.use(express.static(path.resolve(__dirname, '../../dist/frontend')));
+app.use(express.static(path.resolve(__dirname, '../../dist/public')));
 
 // Expose package.json for Mashroom Portal
+app.use('/mashroom.json', express.static(path.resolve(__dirname, '..', '..', 'mashroom.json')));
 app.use('/package.json', express.static(path.resolve(__dirname, '..', '..', 'package.json')));
 
 app.listen(PORT, () => {
