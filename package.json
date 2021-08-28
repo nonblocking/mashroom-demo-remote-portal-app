@@ -1,7 +1,7 @@
 {
     "name": "@mashroom/mashroom-demo-remote-portal-app",
     "description": "Mashroom Demo Remote Portal App",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "homepage": "https://www.mashroom-server.com",
     "repository": "github:nonblocking/mashroom-demo-remote-portal-app",
     "license": "MIT",
@@ -16,7 +16,7 @@
         "dev": "cross-env NODE_ENV=development supervisor --watch src -- -r 'babel-register-ts' src/server/index.ts",
         "build": "concurrently \"npm run type-check\" \"npm run lint\" \"npm run build:server\" \"npm run build:client\"",
         "build:server": "babel ./src/server -d dist/server --extensions .ts",
-        "build:client": "webpack --config webpack.prod.js",
+        "build:client": "webpack --config webpack.client.js",
         "type-check": "tsc --noEmit",
         "lint": "eslint --ext .ts --ext .tsx --fix --quiet ./src",
         "test": "jest"
