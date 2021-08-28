@@ -1,29 +1,16 @@
 
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.scss';
 
 type Props = {
     restProxyPath: string;
 }
 
-type State = {
-    joke: string | undefined | null;
-    error: boolean;
-}
+export default ({restProxyPath}: Props) => {
+    const [joke, setJoke] = useState<string | undefined | null>(null);
+    const [error, setError] = useState(false);
 
-export default class App extends PureComponent<Props, State> {
-
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            error: false,
-            joke: null
-        }
-    }
-
-    componentDidMount() {
-        const { restProxyPath } = this.props;
-
+    useEffect(() => {
         fetch(`${restProxyPath}/randomJoke`).then(
             (response) => {
                 if (response.ok) {
@@ -33,41 +20,24 @@ export default class App extends PureComponent<Props, State> {
             }
         ).then(
             (response) => {
-                this.setState({
-                    joke: response.joke,
-                });
+                setJoke(response.joke);
             }
         ).catch((error) => {
             console.error(error);
-            this.setState({
-                error: true
-            });
+            setError(true);
         });
+    }, []);
+
+    if (error) {
+        return <div className={styles.ErrorStyle}>Error loading</div>
+    } else if (!joke) {
+        return <div>Loading...</div>;
     }
 
-    renderContent() {
-        const { joke, error } = this.state;
-        if (error) {
-            return <div className={styles.ErrorStyle}>Error loading</div>
-        } else if (!joke) {
-            return <div>Loading...</div>;
-        }
-
-        return (
-            <div>
-                <h4>Random Chuck Norris Joke</h4>
-                <div dangerouslySetInnerHTML={{ __html: joke }}/>
-            </div>
-        );
-    }
-
-    render() {
-
-
-        return (
-            <div className={styles.AppStyle}>
-                {this.renderContent()}
-            </div>
-        );
-    }
-}
+    return (
+        <div className={styles.AppStyle}>
+            <h4>Random Chuck Norris Joke</h4>
+            <div dangerouslySetInnerHTML={{ __html: joke }}/>
+        </div>
+    );
+};
