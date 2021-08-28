@@ -1,7 +1,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {Provider} from 'react-redux';
+import storeFactory from './store';
+import App from './components/App';
 
 import type { MashroomPortalAppPluginBootstrapFunction } from '@mashroom/mashroom-portal/type-definitions';
 
@@ -13,8 +15,12 @@ export const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
     const { restProxyPaths } = portalAppSetup || {};
     const restProxyPath = restProxyPaths.bff;
 
+    const store = storeFactory();
+
     ReactDOM.render(
-        <App restProxyPath={restProxyPath}/>,
+        <Provider store={store}>
+            <App restProxyPath={restProxyPath}/>
+        </Provider>,
         portalAppHostElement,
     );
 

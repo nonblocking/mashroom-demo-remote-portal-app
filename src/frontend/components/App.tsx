@@ -1,30 +1,28 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import fetchJoke from '../fetchJoke';
+import {setJoke, setError} from '../store/actions';
 import styles from './App.scss';
+import type {ClientState} from '../../type-definitions';
 
 type Props = {
     restProxyPath: string;
 }
 
 export default ({restProxyPath}: Props) => {
-    const [joke, setJoke] = useState<string | undefined | null>(null);
-    const [error, setError] = useState(false);
+    const dispatch = useDispatch();
+    const joke = useSelector<ClientState, string | null | undefined>(s => s.joke);
+    const error = useSelector<ClientState, boolean>(s => s.error);
 
     useEffect(() => {
-        fetch(`${restProxyPath}/randomJoke`).then(
-            (response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error(`Error: Received ${response.status}`);
-            }
-        ).then(
-            (response) => {
-                setJoke(response.joke);
+        fetchJoke(restProxyPath).then(
+            (joke) => {
+                dispatch(setJoke(joke));
             }
         ).catch((error) => {
             console.error(error);
-            setError(true);
+            dispatch(setError(true));
         });
     }, []);
 
