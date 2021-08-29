@@ -1,8 +1,7 @@
 
-import Pino from 'pino';
+import logger from '../../logger';
 import type { Request, Response } from 'express';
 
-const pino = Pino();
 
 export default async (req: Request, res: Response) => {
     try {
@@ -22,7 +21,7 @@ export default async (req: Request, res: Response) => {
             joke: data.value.joke
         });
     } catch (e) {
-        pino.error(e, 'Looking up a random joke failed');
+        logger.error(e, 'Looking up a random joke failed');
         res.sendStatus(500);
     }
 };
