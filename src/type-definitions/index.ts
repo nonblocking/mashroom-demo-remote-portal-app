@@ -3,6 +3,7 @@ import type {Store as ReduxStore, Dispatch as ReduxDispatch, AnyAction} from 're
 
 export type ClientState = {
     joke: string | undefined | null;
+    loading: boolean;
     error: boolean;
 }
 
