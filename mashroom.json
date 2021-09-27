@@ -17,7 +17,6 @@
                 "restProxies": {
                     "bff": {
                         "targetUri": "http://localhost:6086/api",
-                        "sendUserHeaders": true,
                         "sendPermissionsHeader": true
                     }
                 },
