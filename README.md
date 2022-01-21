@@ -1,12 +1,11 @@
 
 # Mashroom Demo Remote Portal App
 
-Simple demo App (Microfrontend) for [Mashroom Server](https://www.mashroom-server.com) that shows a random Chuck Norris joke from http://api.icndb.com
+emo App (SPA) for [Mashroom Server](https://www.mashroom-server.com) that shows a random Chuck Norris joke from
+[http://api.icndb.com](http://api.icndb.com). It shows how to integrate Apps from remote servers into the *Mashroom Portal*.
 
-This demo shows how to dynamically integrate an App into _Mashroom Portal_ that runs on a different server.
-
-It also runs on http://demo-remote-app.mashroom-server.com if you want to test the Remote App capabilities of _Mashroom Portal_ without
-installing this first.
+It also runs on [http://demo-remote-app.mashroom-server.com](http://demo-remote-app.mashroom-server.com)
+if you want to test the Remote App capabilities of _Mashroom Portal_ without installing this first.
 
 ## Usage
 
