@@ -4,17 +4,22 @@
     "plugins": [
         {
             "name": "Mashroom Demo Remote Portal App",
-            "type": "portal-app",
-            "category": "Demo",
-            "bootstrap": "startupDemoRemotePortalApp",
+            "type": "portal-app2",
+            "clientBootstrap": "startupDemoRemotePortalApp",
             "resources": {
                 "js": [
                     "index.js"
                 ]
             },
+            "local": {
+                "resourcesRoot": "./dist/frontend"
+            },
+            "remote": {
+                "resourcesRoot": "/"
+            },
             "defaultConfig": {
-                "resourcesRoot": "./dist/frontend",
-                "restProxies": {
+                "category": "Demo",
+                "proxies": {
                     "bff": {
                         "targetUri": "http://localhost:6086/api",
                         "sendPermissionsHeader": true

@@ -12,14 +12,14 @@ export const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
     portalAppSetup,
     clientServices,
 ) => {
-    const { restProxyPaths, appConfig: {standalone} } = portalAppSetup;
-    const restProxyPath = restProxyPaths.bff;
+    const { proxyPaths, appConfig: {standalone} } = portalAppSetup;
+    const bffBasePath = proxyPaths.bff;
 
     const store = storeFactory();
 
     ReactDOM.render(
         <Provider store={store}>
-            <App standalone={!!standalone} restProxyPath={restProxyPath}/>
+            <App standalone={!!standalone} bffBasePath={bffBasePath}/>
         </Provider>,
         portalAppHostElement,
     );
