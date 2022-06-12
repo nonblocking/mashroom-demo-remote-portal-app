@@ -1,6 +1,6 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import {Provider} from 'react-redux';
 import storeFactory from './store';
 import App from './components/App';
@@ -17,16 +17,16 @@ export const bootstrap: MashroomPortalAppPluginBootstrapFunction = (
 
     const store = storeFactory();
 
-    ReactDOM.render(
+    const root = createRoot(portalAppHostElement);
+    root.render(
         <Provider store={store}>
             <App standalone={!!standalone} bffBasePath={bffBasePath}/>
         </Provider>,
-        portalAppHostElement,
     );
 
     return Promise.resolve({
         willBeRemoved: () => {
-            ReactDOM.unmountComponentAtNode(portalAppHostElement);
+            root.unmount();
         },
     });
 };
