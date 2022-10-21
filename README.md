@@ -22,3 +22,11 @@ Open in your browser: http://localhost:6088/
  * Open http://localhost:5050/mashroom/admin/ext/remote-portal-apps
  * Copy http://localhost:6088 into the URL input and click _Add_
  * Open http://localhost:5050/portal and place the _Mashroom Demo Remote Portal App_ on any page via Drag'n'Drop
+
+### Docker
+
+    npm install
+    npm run build
+    docker build -t mashroom-demo-remote-portal-app .
+    docker run --rm -p 6088:6088 mashroom-demo-remote-portal-app
+
