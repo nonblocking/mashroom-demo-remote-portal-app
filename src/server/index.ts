@@ -1,6 +1,6 @@
 
-import express from 'express';
 import path from 'path';
+import express from 'express';
 import api from './routes/api';
 import logger from './logger';
 
@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || '6088';
 
 if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+     
     const devMiddleware = require('./middleware/devMiddleware').default;
     app.use(devMiddleware);
 }
