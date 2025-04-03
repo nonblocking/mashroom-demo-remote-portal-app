@@ -14,11 +14,12 @@
         "stop": "pm2 stop demo-remote-app-cluster.json",
         "reload": "pm2 reload demo-remote-app-cluster.json",
         "dev": "cross-env NODE_ENV=development supervisor --watch src -- -r 'babel-register-ts' src/server/index.ts",
-        "build": "concurrently \"npm run type-check\" \"npm run lint\" \"npm run build:server\" \"npm run build:client\"",
+        "build": "npm run type-check && npm run lint && npm run build:server && npm run build:client && cpy ./screenshot.png dist/frontend",
         "build:server": "babel ./src/server -d dist/server --extensions .ts",
         "build:client": "webpack --config webpack.client.js",
         "type-check": "tsc --noEmit",
-        "lint": "eslint --fix"
+        "lint": "eslint --fix",
+        "test": "jest --passWithNoTests"
     },
     "dependencies": {
         "cross-env": "^7.0.3",
@@ -41,7 +42,6 @@
         "@babel/preset-react": "^7.26.3",
         "babel-register-ts": "^7.0.0",
         "babel-loader": "^10.0.0",
-        "concurrently": "^9.1.2",
         "cross-var": "^1.1.0",
         "css-loader": "^7.1.2",
         "eslint": "^9.23.0",
@@ -62,6 +62,7 @@
         "sass-loader": "^16.0.5",
         "style-loader": "^4.0.0",
         "supervisor": "^0.12.0",
+        "cpy-cli": "^5.0.0",
         "webpack": "^5.98.0",
         "webpack-cli": "^6.0.1",
         "webpack-dev-middleware": "^7.4.2",

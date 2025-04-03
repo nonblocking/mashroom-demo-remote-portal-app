@@ -9,6 +9,8 @@ into *Mashroom Portal*.
 It also runs on [http://demo-remote-app.mashroom-server.com](http://demo-remote-app.mashroom-server.com)
 if you want to test the Remote App capabilities of *Mashroom Portal* without installing this first.
 
+![Screenshot](screenshot.png)
+
 ## Usage
 
     npm install
